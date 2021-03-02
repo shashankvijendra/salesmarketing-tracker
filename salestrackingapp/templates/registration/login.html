@@ -1,0 +1,129 @@
+<html>
+<head>
+
+  <meta charset="UTF-8">
+  <meta name="description" content="fruitshop,madhu fruitshop">
+  <meta name="keywords" content="fruitshop,fruit,shop,FRUITSHOP,Madhushop,madhu,SHOP,FRUIT">
+  <meta name="author" content="Shashank">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+{% load static %}
+<style type="text/css">
+body, html {
+  height: 100%;
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* Position text in the middle of the page/image */
+.bg-text {
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0, 0.4); /* Black w/opacity/see-through */
+  color: white;
+  font-weight: bold;
+  border: 3px solid #f1f1f1;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  width: 100%;
+  padding: 20px;
+  text-align: center;
+  
+}
+
+.body_login{
+  
+  background-image:url("{% static 'homepage/holdfruit.jpg' %}");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  height: 100%; 
+   filter: blur(1px);
+  -webkit-filter: blur(4px);
+  
+
+}
+
+input{
+  padding:4px;
+  display:block;
+  border:black;
+  background-color: cornsilk;
+  border-bottom:1px solid rgb(187, 218, 233);
+  width:100%;
+  color: black;
+  opacity: 0.8;
+}
+.bg-subtext{
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0, 0.8); /* Black w/opacity/see-through */
+  color: white;
+  font-weight: bold;
+  border: 3px solid #f1f1f1;
+  position: absolute;
+  top: 10%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  width: 100%;
+  padding: 20px;
+  text-align: center;
+
+}
+@media only screen and (min-width : 1260px) {
+    .main_display
+    {
+      width: 500px;
+    }
+  }
+</style>
+
+<body>
+  <div class="body_login"></div>
+
+  
+  <div class="container text-center bg-text main_display" style="  margin-top: 30px;">
+    <div class="row" style="margin-top: 30px;">
+      <div class="col-md-12 ">
+        <h2 class="text-white"> <u>Login </u></h2>
+      </div>
+    </div>
+    <form method="post">
+    <div class="row" >
+    
+        
+          {% csrf_token %}
+         
+            <div class="col-md-6 mt-2">
+             <b><label class="text-white bg-dark">PhoneNumber</label></b>
+            </div>
+            <div class="col-md-6 mt-2">
+              {{form.username}}
+            </div>
+            <div class="col-md-6 mt-2">
+             <b> <label class="text-white bg-dark">Password</label></b>
+            </div>
+            <div class="col-md-6 mt-2 ">{{form.password}}</div>
+
+          
+            <div class="col-md-12 text-center mt-2">
+          <button class="btn btn-light btn-sm" type="submit" style="justify-content: center;">Login</button>
+            </div>
+      
+      <div class="col-md-12 text-center mt-2">
+          <button class="btn btn-sm"><a class="btn btn-block btn-light btn-sm" href="/sales/register">Create Account</a></button>
+      
+        </div>
+    </div>
+  </form>
+  </div>
+
+</body>
+
+</html>

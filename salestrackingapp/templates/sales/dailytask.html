@@ -1,0 +1,46 @@
+
+
+{% extends 'sales/home.html' %}
+{%  block content %}
+
+<div class="col-md-12  text-left" style="padding: 20px 20px 20px 20px;font-family: 'Times New Roman', Times, serif;color: black;">
+    
+    
+<form method="POST">
+  <input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}">
+  <div class="row ">
+      <div class="text-right col-md-6 " style="width: 40%;">
+         <label> Area Visited</label>
+      </div>
+      <div class="text-center col-md-6" style="width: 40%;">
+          {{taskobject.Area_visited}}
+  </div></div>
+  <div class="row ">
+      <div class="text-right col-md-6 " style="width: 40%;">
+        <label>total_persons_approched</label>
+      </div>
+      <div class="text-center col-md-6" style="width: 40%;">
+          {{taskobject.total_persons_approched}}
+  </div></div>
+  <div class="row ">
+          <div class="text-right col-md-6 " style="width: 40%;">
+        <label>number_converted</label>
+          </div>
+          <div class="text-center col-md-6" style="width: 40%;">
+              {{taskobject.number_converted}}
+  </div>
+</div>
+  
+  
+  
+  <div class="col-md-12 text-center">
+      <button class="btn btn-light"><span class="fa fa-save">Submit</span></button>
+      
+  </div>
+</form>
+</div>
+
+
+
+
+{% endblock %}

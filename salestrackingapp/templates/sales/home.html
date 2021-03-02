@@ -1,0 +1,40 @@
+
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="description" content="fruitshop,madhu fruitshop">
+        <meta name="keywords" content="fruitshop,fruit,shop,FRUITSHOP,Madhushop,madhu,SHOP,FRUIT">
+        <meta name="author" content="Shashank">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        {% load static %}
+        <link rel="shortcut icon" type="image/png" href="{% static 'homepage/icon.png' %}">
+        {% include "sales/link.html" %}
+    </head>
+
+<body>
+
+<h1>Welcome </h1>
+{% if task == 1 %}
+<button class="btn btn-light btn-green"><a href="/sales/dailytask">Task Update</a>
+
+</button>
+{% endif %}
+{% if task == 0 %}
+<button class="btn btn-light btn-green">
+    <a href="/sales/customerdata">Customer Details</a>
+</button>
+{% endif %}
+<button class="btn btn-light btn-warning">
+    <a href="/sales/home">Home
+    </a>
+</button>
+<button class="btn btn-light btn-green">
+    <a href="/sales/customerdata/display">Customer Details display</a>
+</button>
+{% block content %}
+
+
+{% endblock %}
+</body>
+</html>
+

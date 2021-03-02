@@ -1,0 +1,62 @@
+
+
+{% extends 'sales/home.html' %}
+{%  block content %}
+
+<div class="col-md-12  text-left" style="padding: 20px 20px 20px 20px;font-family: 'Times New Roman', Times, serif;color: black;">
+    
+    
+<form method="POST">
+  <input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}">
+  <div class="row ">
+      <div class="text-right col-md-6 " style="width: 40%;">
+         <label> Name</label>
+      </div>
+      <div class="text-center col-md-6" style="width: 40%;">
+          {{customerobject.Name}}
+  </div></div>
+  <div class="row ">
+      <div class="text-right col-md-6 " style="width: 40%;">
+        <label>DOB</label>
+      </div>
+      <div class="text-center col-md-6" style="width: 40%;">
+          {{customerobject.DOB}}
+  </div></div>
+  <div class="row ">
+          <div class="text-right col-md-6 " style="width: 40%;">
+        <label>Age</label>
+          </div>
+          <div class="text-center col-md-6" style="width: 40%;">
+              {{customerobject.Age}}
+  </div>
+</div>
+<div class="row ">
+    <div class="text-right col-md-6 " style="width: 40%;">
+  <label>Gender</label>
+    </div>
+    <div class="text-center col-md-6" style="width: 40%;">
+        {{customerobject.Gender}}
+    </div>
+</div>
+<div class="row ">
+    <div class="text-right col-md-6 " style="width: 40%;">
+  <label>Family Member</label>
+    </div>
+    <div class="text-center col-md-6" style="width: 40%;">
+        {{customerobject.Family_member}}
+    </div>
+</div>
+  
+  
+  
+  <div class="col-md-12 text-center">
+      <button class="btn btn-light"><span class="fa fa-save">Submit</span></button>
+      
+  </div>
+</form>
+</div>
+
+
+
+
+{% endblock %}

@@ -1,0 +1,18 @@
+.maincolor{
+    background-color: blue;
+}
+.bodyclass{
+    background-color: rgb(245, 237, 242);
+    font-family: 'Times New Roman', Times, serif;
+}
+.subbodycolor{
+    background-color: rgb(223, 228, 235) ;
+}
+.inputmargin{
+    margin-bottom: 10px;
+    
+}
+.successbtn{
+    color: rgb(146, 79, 160) !important;
+}
+

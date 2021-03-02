@@ -1,0 +1,74 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="description" content="sales tracking">
+        <meta name="keywords" content="sales,trcking">
+        <meta name="author" content="Shashank">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        {% include "sales/link.html" %}
+        
+      </head>
+      {% load static %}
+      <style type="text/css">
+    .signup_img{
+        background-image:url("{% static 'homepage/bg.jpg' %}");
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+    
+    </style>
+<body class="signup_img" style="background-color:darkblue;font-family: Arial, Helvetica, sans-serif; font-style: oblique;font-size: 30px;">
+<div class="text-left">
+    <a class="nav-link btn " href="/sales/login/"><span class="btn btn-light">Login</span></a>
+</div>
+<div class="col-md-12  text-left" style="padding: 20px 20px 20px 20px;font-family: monospace;color: lavenderblush;">
+      <p class="help-block">{{ error }}</p>
+      
+<form method="POST">
+    <input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}">
+    <div class="row inputmargin">
+        <div class="text-center col-md-6 " style="width: 40%;">
+            Email Address
+        </div>
+        <div class="text-center col-md-6" style="width: 40%;">
+            {{customobject.email}}
+    </div></div>
+    <div class="row inputmargin">
+        <div class="text-center col-md-6 " style="width: 40%;">
+            Phone Number
+        </div>
+        <div class="text-center col-md-6" style="width: 40%;">
+            {{customobject.PhoneNumber}}
+    </div></div>
+    <div class="row inputmargin">
+            <div class="text-center col-md-6 " style="width: 40%;">
+                Age
+            </div>
+            <div class="text-center col-md-6" style="width: 40%;">
+                {{customobject.Age}}
+    </div></div>
+    
+    <div class="row inputmargin">
+            <div class="text-center col-md-6 " style="width: 40%;">
+                Password
+            </div>
+            <div class="text-center col-md-6" style="width: 40%;">
+                {{customobject.password1}}
+    </div></div>
+    <div class="row inputmargin">
+        <div class="text-center col-md-6 " style="width: 40%;">
+            Confirm Password
+        </div>
+        <div class="text-center col-md-6" style="width: 40%;">
+            {{customobject.password2}}
+    </div></div>
+    
+    <div class="col-md-12 text-center">
+        <button class="btn btn-light"><span class="fa fa-save">Submit</span></button>
+        
+    </div>
+</form>
+</div>
+</body>
+
+</html>
