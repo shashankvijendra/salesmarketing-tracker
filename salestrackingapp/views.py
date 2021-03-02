@@ -10,6 +10,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 import datetime
 import logging
+import json
 from salestrackingapp.models import *
 from datetime import date
 from django.db.models import Max
@@ -103,6 +104,19 @@ def customer_data_display(request):
     return render(request, 'sales/cus_data_display.html', context)
 
 def customer_data_delete(request,id):
-
     customerdatadisplay=customerdata.objects.filter(id=id).delete()
     return HttpResponseRedirect('/sales/customerdata/display')
+
+def editdata_save(request):
+    edit_ajax_data=json.loads(request.POST['edit_customer_data'])
+    print(edit_ajax_data)
+    editobj=customerdata.objects.get(id=edit_ajax_data['id'])
+    editobj.Name=edit_ajax_data['name']
+    editobj.DOB=edit_ajax_data['dob']
+    editobj.Family_member=edit_ajax_data['age']
+    editobj.Gender=edit_ajax_data['gender']
+    editobj.Family_member=edit_ajax_data['familymember']
+    # editobj.Is_client=edit_ajax_data['familymember']
+    editobj.save()
+    
+    return JsonResponse({'msg':'success'})

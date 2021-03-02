@@ -22,7 +22,7 @@
     {{i.Family_member}}
 </div>
 <div class="col-md-1">
-    <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#myModal">Edit</button>
+    <button type="button" class="btn btn-warning btn-sm" onclick="editdata('{{i.id}}','{{i.Name}}','{{i.DOB}}','{{i.Age}}','{{i.Gender}}','{{i.Family_member}}')" data-toggle="modal" data-target="#myModal">Edit</button>
 </div>
 <div class="col-md-1">
     <a href="/sales/delete/{{i.id}}" class="btn btn-sm btn-danger">Delete</a>
@@ -41,10 +41,44 @@
         <h4 class="modal-title">Edit Details</h4>
       </div>
       <div class="modal-body">
-        <p>Some text in the modal.</p>
+        <div class="row">
+            <div class="col-6-md">
+                <label>Name</label>
+            </div>
+            <div class="col-6-md">
+                <input class="form-control" id="Name_data">
+            </div>
+            <div class="col-6-md">
+                <label>Date of Birth</label>
+            </div>
+            <div class="col-6-md">
+                <input class="form-control" id="DOB_data">
+            </div>
+            <div class="col-6-md">
+                <label>Age</label>
+            </div>
+            <div class="col-6-md">
+                <input class="form-control" id="Age_data">
+            </div>
+            <div class="col-6-md">
+                <label>Gender</label>
+            </div>
+            <div class="col-6-md">
+                <input class="form-control" id="Gender_data">
+            </div>
+            <div class="col-6-md">
+                <label>Family Members</label>
+            </div>
+            <div class="col-6-md">
+                <input class="form-control" id="familymember_data">
+            </div>
+
+        </div>
       </div>
       <div class="modal-footer">
+        <button type="button" class="btn btn-default" onclick="submit()" data-dismiss="modal">OK</button>
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <p style="display: block;" id="transaction_id"></p>
       </div>
     </div>
 
@@ -55,9 +89,59 @@
 
 
 <script type="text/javascript">
+function getCookie(name) {
+  var cookieValue = null;
+  if (document.cookie && document.cookie != "") {
+    var cookies = document.cookie.split(";");
+    for (var i = 0; i < cookies.length; i++) {
+      var cookie = jQuery.trim(cookies[i]);
+      // Does this cookie string begin with the name we want?
+      if (cookie.substring(0, name.length + 1) == name + "=") {
+        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+        break;
+      }
+    }
+  }
+  return cookieValue;
+}
 
-editdata=function(){
+$.ajaxSetup({
+  beforeSend: function(xhr, settings) {
+    if (!(/^http:.*/.test(settings.url) || /^https:.*/.test(settings.url))) {
+      // Only send the token to relative URLs i.e. locally.
+      xhr.setRequestHeader("X-CSRFToken", getCookie("csrftoken"));
+    }
+  }
+});
+
+editdata=function(id,name,dob,age,gen,fam_mem){
+    document.getElementById('Name_data').value=name;
+    document.getElementById('DOB_data').value=dob;
+    document.getElementById('Age_data').value=age;
+    document.getElementById('Gender_data').value=gen;
+    document.getElementById('familymember_data').value=fam_mem;
+    document.getElementById('transaction_id').value=id;
     
+}
+submit=function(){
+    arr={};
+    arr['id']=document.getElementById('transaction_id').value
+    arr['name']=document.getElementById('Name_data').value;
+    arr['dob']=document.getElementById('DOB_data').value;
+    arr['age']=document.getElementById('Age_data').value;
+    arr['gender']=document.getElementById('Gender_data').value;
+    arr['familymember']=document.getElementById('familymember_data').value;
+    // arr['familymember']=document.getElementById('familymember_data').value;
+    $.ajax({
+    type: "POST",
+    url: "/submit",
+    dataType: "json",
+    data: { edit_customer_data: JSON.stringify(arr)},
+    success: function(msg) {
+      
+      location.reload();
+    }
+  });
     
 
 }

@@ -30,4 +30,5 @@ urlpatterns = [
     path('sales/customerdata',customer_data,name='customer'),
     path('sales/customerdata/display',customer_data_display,name='customer'),
     path('sales/delete/<int:id>',customer_data_delete,name='customer_delete'),
+    path('submit',editdata_save,name='ajax_datasave'),
 ]
